@@ -17,7 +17,7 @@
         </div>
         <div id="invoice">
           <h1>ID Bill</h1>
-          <div class="idbill">XXXXX</div>
+          <li>IdBill: <span id="idBill"></span></li>
           <div class="date">Date: 30/06/2014</div>
         </div>
       </div>
@@ -34,10 +34,10 @@
         <tbody>
           <tr>
             <td class="no">01</td>
-            <td class="desc"><h3>Coco</h3></td>
-            <td class="unit">55.00</td>
+            <td class="desc"><li><span id="payment"></span></li></td>
+            <td class="unit"><li><span id="price"></span></li></td>
             <td class="qty">1</td>
-            <td class="total">55.00</td>
+            <td class="total"><li><span id="price"></span></li></td>
           </tr>
           <tr>
             <td class="no">XX</td>
@@ -64,9 +64,11 @@
       <a href="InputCode.html" class="button">Back</a>
       <div id="thanks">Thank you!</div>
       
+       
+        
     </main>
-    <li>IdBill: <span id="idBill"></span></li>
-        <li>Date: <span id="date"></span></li>
+   
+    </header>
     <footer>
      <script language="JavaScript">
 var ajax = new XMLHttpRequest();
@@ -76,20 +78,18 @@ ajax.open("GET", "http://localhost:8080/api/bill", true);
 ajax.send();
 
 function functionName() {
-    console.log(this);
+    console.log(this.responseText);
     if (this.status == 200) {
         var json = JSON.parse(this.responseText);
         var payment = json.payment;
         var idBill = json.idBill;
         var price = json.price;
-        var date = json.date;
         var referOfno = json.referOfno;
         var fee = json.fee;
 
         document.getElementById("payment").innerHTML = payment ;
         document.getElementById("idBill").innerHTML = idBill ;
         document.getElementById("price").innerHTML = price ;
-        document.getElementById("date").innerHTML = date ;
         document.getElementById("referOfno").innerHTML = referOfno ;
         document.getElementById("fee").innerHTML = fee ;
         
