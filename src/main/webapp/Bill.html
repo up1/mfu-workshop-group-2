@@ -65,8 +65,45 @@
       <div id="thanks">Thank you!</div>
       
     </main>
+    <li>IdBill: <span id="idBill"></span></li>
+        <li>Date: <span id="date"></span></li>
     <footer>
-     
+     <script language="JavaScript">
+var ajax = new XMLHttpRequest();
+ajax.onload = functionName;
+ajax.onerror = errorFunctionName;
+ajax.open("GET", "http://localhost:8080/api/bill", true);
+ajax.send();
+
+function functionName() {
+    console.log(this);
+    if (this.status == 200) {
+        var json = JSON.parse(this.responseText);
+        var payment = json.payment;
+        var idBill = json.idBill;
+        var price = json.price;
+        var date = json.date;
+        var referOfno = json.referOfno;
+        var fee = json.fee;
+
+        document.getElementById("payment").innerHTML = payment ;
+        document.getElementById("idBill").innerHTML = idBill ;
+        document.getElementById("price").innerHTML = price ;
+        document.getElementById("date").innerHTML = date ;
+        document.getElementById("referOfno").innerHTML = referOfno ;
+        document.getElementById("fee").innerHTML = fee ;
+        
+    } else {
+        // TODO
+    }
+}
+function errorFunctionName(e) {
+    console.log(this);
+    console.error(e);
+}
+</script>
     </footer>
   </body>
 </html>
+
+
